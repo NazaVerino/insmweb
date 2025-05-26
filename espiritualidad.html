@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Espiritualidad - Instituto Nuestra Señora de la Merced</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--primary-color: #ffcc00; /* Amarillo */
+				--secondary-color: #cc0000; /* Rojo */
+				--text-color: #000000; /* Negro */
+				--bg-color: #ffffff; /* Blanco */
+				--hover-color: rgba(255, 204, 0, 0.1);
+				--merced-red: #b71c1c;
+				--merced-yellow: #ffc107;
+				--merced-black: #212121;
+				--merced-white: #ffffff;
+				--rojo-mercedario: #c41e3a;
+				--amarillo-mercedario: #f9ca24;
+				--negro: #222;
+				--blanco: #fff;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: 'Rockwell', sans-serif;
+			}
+
+			body,
+			p,
+			a,
+			span,
+			li,
+			button,
+			input,
+			textarea {
+				font-family: 'Rockwell', sans-serif;
+				font-weight: 400;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-family: 'Barlow Condensed', sans-serif;
+				font-weight: 600;
+			}
+
+			body {
+				background-color: var(--merced-white);
+				color: var(--merced-black);
+				line-height: 1.6;
+				overflow-x: hidden;
+				font-size: 18px;
+				letter-spacing: 0.02em;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem;
+				position: relative;
+			}
+
+			/* Estilos para la cabecera - ACTUALIZADOS */
+			header {
+				background-color: var(--bg-color);
+				box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+				position: sticky;
+				top: 0;
+				z-index: 1000;
+				transition: all 0.3s ease;
+			}
+
+			.header-top {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 12px 5%;
+				border-bottom: 1px solid #eee;
+			}
+
+			.logo {
+				display: flex;
+				align-items: center;
+			}
+
+			.logo img {
+				height: 50px;
+				margin-right: 15px;
+				transition: transform 0.3s ease;
+			}
+
+			.logo img:hover {
+				transform: scale(1.02);
+			}
+
+			.logo-text h1 {
+				font-size: 22px;
+				font-weight: 500;
+				color: var(--secondary-color);
+				letter-spacing: 0.05em;
+				margin-bottom: 0;
+			}
+
+			.logo-text p {
+				font-size: 16px;
+				color: #666;
+				letter-spacing: 0.08em;
+			}
+
+			nav {
+				background-color: var(--bg-color);
+				padding: 0 5%;
+			}
+
+			.nav-links {
+				display: flex;
+				list-style: none;
+				justify-content: space-between;
+			}
+
+			.nav-links li {
+				position: relative;
+			}
+
+			.nav-links a {
+				display: block;
+				padding: 15px 20px;
+				text-decoration: none;
+				color: var(--text-color);
+				font-weight: 500;
+				font-size: 17px;
+				transition: all 0.3s ease;
+				border-bottom: 1px solid transparent;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.nav-links a:hover {
+				color: var(--secondary-color);
+				border-bottom: 1px solid var(--primary-color);
+				background-color: var(--hover-color);
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+
+			.dropdown-content {
+				visibility: hidden;
+				opacity: 0;
+				position: absolute;
+				background-color: var(--bg-color);
+				min-width: 250px;
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+				z-index: 1;
+				transform: translateY(10px);
+				transition: all 0.3s ease;
+			}
+
+			.dropdown:hover .dropdown-content {
+				visibility: visible;
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.dropdown-content a {
+				padding: 12px 20px;
+				display: block;
+				text-decoration: none;
+				color: var(--text-color);
+				transition: all 0.3s ease;
+				border-bottom: 1px solid #f5f5f5;
+				font-size: 16px;
+				text-transform: none;
+				letter-spacing: 0.05em;
+			}
+
+			.dropdown-content a:hover {
+				background-color: var(--hover-color);
+				color: var(--secondary-color);
+				padding-left: 25px;
+			}
+
+			@keyframes shine {
+				0% {
+					transform: translateX(-100%);
+				}
+				100% {
+					transform: translateX(100%);
+				}
+			}
+
+			.header h1 {
+				position: relative;
+				font-size: 2.5rem;
+				letter-spacing: 1px;
+				margin-bottom: 0.5rem;
+				animation: fadeInDown 1s ease-out;
+				color: var(--rojo-mercedario);
+			}
+
+			.header {
+				text-align: center;
+				margin-bottom: 2rem;
+				position: relative;
+				padding-bottom: 1rem;
+				border-bottom: 3px solid var(--rojo-mercedario);
+				margin-top: 30px;
+			}
+
+			.header::after {
+				content: '';
+				position: absolute;
+				bottom: -3px;
+				left: 50%;
+				width: 0;
+				height: 3px;
+				background-color: var(--amarillo-mercedario);
+				animation: expandBorder 2s ease forwards;
+			}
+
+			@keyframes fadeInDown {
+				from {
+					opacity: 0;
+					transform: translateY(-20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes expandBorder {
+				from {
+					width: 0;
+					left: 50%;
+				}
+				to {
+					width: 60%;
+					left: 20%;
+				}
+			}
+
+			.section {
+				margin-bottom: 3rem;
+				opacity: 0;
+				transform: translateY(20px);
+				transition: opacity 0.8s ease, transform 0.8s ease;
+			}
+
+			.section.active {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.section-title {
+				color: var(--rojo-mercedario);
+				font-size: 1.8rem;
+				margin-bottom: 1.5rem;
+				position: relative;
+				display: inline-block;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -10px;
+				left: 0;
+				width: 60px;
+				height: 3px;
+				background-color: var(--amarillo-mercedario);
+				transition: width 0.3s ease;
+			}
+
+			.section-title:hover::after {
+				width: 100%;
+			}
+
+			.text-block {
+				line-height: 1.8;
+				margin-bottom: 1.5rem;
+				text-align: justify;
+			}
+
+			.text-block:first-of-type {
+				font-style: italic;
+				font-weight: 500;
+				border-left: 3px solid var(--amarillo-mercedario);
+				padding-left: 1rem;
+			}
+
+			.highlight {
+				color: var(--rojo-mercedario);
+			}
+
+			.img-container {
+				position: relative;
+				width: 100%;
+				height: 300px;
+				overflow: hidden;
+				border-radius: 8px;
+				margin: 2rem 0;
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+			}
+
+			.img-container img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.divider {
+				width: 100%;
+				height: 2px;
+				background: linear-gradient(to right, transparent, var(--amarillo-mercedario), transparent);
+				margin: 2rem 0;
+			}
+
+			.footer {
+				background-color: var(--negro);
+				color: var(--blanco);
+				text-align: center;
+				padding: 1rem 0;
+				font-size: 0.9rem;
+			}
+
+			.footer span {
+				color: var(--amarillo-mercedario);
+			}
+
+			.values-list {
+				background-color: rgba(196, 30, 58, 0.05);
+				padding: 1.5rem;
+				border-radius: 8px;
+				border-left: 4px solid var(--rojo-mercedario);
+				margin: 2rem 0;
+				font-style: italic;
+			}
+
+			.values-list p {
+				margin-bottom: 0.5rem;
+				line-height: 1.6;
+			}
+
+			.float-img {
+				float: right;
+				width: 250px;
+				height: 250px;
+				border-radius: 50%;
+				shape-outside: circle();
+				margin: 0 0 20px 20px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+			}
+
+			.float-img img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			/* Estilos responsivos para la cabecera - ACTUALIZADOS */
+			@media (max-width: 768px) {
+				.header-top {
+					flex-direction: column;
+					text-align: center;
+				}
+
+				.logo {
+					margin-bottom: 15px;
+				}
+
+				.nav-links {
+					flex-direction: column;
+				}
+
+				.dropdown-content {
+					position: static;
+					opacity: 1;
+					visibility: visible;
+					box-shadow: none;
+					max-height: 0;
+					overflow: hidden;
+					transition: max-height 0.3s ease;
+				}
+
+				.dropdown:hover .dropdown-content {
+					max-height: 500px;
+				}
+
+				.header h1 {
+					font-size: 2rem;
+				}
+
+				.container {
+					padding: 1rem;
+				}
+
+				.section-title {
+					font-size: 1.5rem;
+				}
+
+				.float-img {
+					float: none;
+					margin: 1rem auto;
+					display: block;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Cabecera ACTUALIZADA -->
+		<header>
+			<div class="header-top">
+				<div class="logo">
+					<img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced" />
+					<div class="logo-text">
+						<h1>Instituto Nuestra Señora de la Merced</h1>
+						<p>Arroyito, Córdoba</p>
+					</div>
+				</div>
+			</div>
+			<nav>
+				<ul class="nav-links">
+					<li><a href="index.html">Inicio</a></li>
+					<li class="dropdown">
+						<a href="#">Raíces</a>
+						<div class="dropdown-content">
+							<a href="orden.html">Orden de la Merced</a>
+							<a href="historia.html">Historia de la Congregación</a>
+							<a href="fundador.html">Fundador Fray León Torres</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<a href="#">Nosotras</a>
+						<div class="dropdown-content">
+							<a href="identidad.html">Identidad</a>
+							<a href="espiritualidad.html">Espiritualidad</a>
+						</div>
+					</li>
+					<li><a href="proyectos.html">Nos Proyectamos</a></li>
+					<li><a href="recursos.html">Recursos</a></li>
+					<li><a href="contacto.html">Contacto</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div class="header">
+			<h1>Nuestra Espiritualidad</h1>
+		</div>
+
+		<div class="container">
+			<section class="section" id="section1">
+				<h2 class="section-title">Espiritualidad Mercedaria</h2>
+				<p class="text-block">
+					"<span class="highlight"
+						>Espiritualidad: don recibido de la gracia, reconocido con humildad, compartido con
+						sencillez, y ofrecido en el servicio a la comunidad.</span
+					>"
+				</p>
+
+				<div class="float-img">
+					<img src="img/espiritualidad.png" alt="Eucaristía y Espiritualidad Mercedaria" />
+				</div>
+
+				<p class="text-block">
+					En respuesta a una personal vocación, nuestro Padre Fundador se sintió impulsado a meditar
+					y configurarse con el Cristo Redentor, el Cristo obediente hasta la muerte y muerte de
+					cruz, el Cristo humilde hecho pan en la Eucarística y con la Madre de Dios que contempló y
+					vivió estos misterios.
+				</p>
+				<p class="text-block">
+					Este modo ordenado, humano y coherente de desarrollar el don recibido, (el carisma
+					personal, la presencia del espíritu de Dios y la vida cristiana), es lo que llamamos
+					espiritualidad. Por tanto, podemos decir que, el Padre José León Torres cultivó la
+					espiritualidad como el don de Dios, del carisma, que ha recibido como una semilla sembrada
+					en la tierra de su libertad y de sus decisiones, para ser desarrollada y proyectada.
+				</p>
+			</section>
+
+			<div class="img-container">
+				<img src="img/oracion.jpg" alt="Hermanas Mercedarias en oración" />
+			</div>
+
+			<section class="section" id="section2">
+				<p class="text-block">
+					Podemos afirmar que espiritual es el creyente que cultiva la gracia, el don recibido, lo
+					reconoce con humildad, lo comparte con sencillez, y lo pone al servicio de la comunidad.
+				</p>
+				<p class="text-block">
+					Por lo mismo, la espiritualidad de la Congregación es
+					<span class="highlight">Redentora, Eucarística y Mariana</span>, se sustenta en la fe, la
+					caridad, la humildad y la obediencia.
+				</p>
+				<p class="text-block">
+					El espíritu de la Congregación es el modo de desarrollar y transmitir los dones
+					carismáticos de nuestro Padre Fundador que se traducen en una espiritualidad propia. Por
+					este motivo, la Religiosa mercedaria manifiesta gran amor a la pasión del Señor, a la
+					Santísima Eucaristía y a María bajo la advocación de la Merced.
+				</p>
+			</section>
+
+			<div class="divider"></div>
+
+			<section class="section" id="section3">
+				<p class="text-block">
+					Como Mercedarias y Mercedarios del Niño Jesús, estamos comprometidas a crecer cada día en
+					este estilo propio que el Espíritu Santo inspiró al Padre Torres, a cultivar el carisma
+					fundacional que se lo dio sólo a Él y que cada una de nosotras está llamada a conocer e
+					internalizar, desde las mismas enseñanzas de Nuestro Padre y de las sanas tradiciones
+					recibidas de nuestras hermanas mayores.
+				</p>
+
+				<div class="values-list">
+					<p>Nos quería:</p>
+					<p>Orantes, alegres, silenciosas,</p>
+					<p>Humildes, sinceras, sencillas, obedientes,</p>
+					<p>Cultas, respetuosas, amables, prudentes,</p>
+					<p>Observantes, austeras, abnegadas,</p>
+					<p>Constantes en el trabajo y diligentes en su formación,</p>
+					<p>Unidas en espíritu y verdad,</p>
+					<p>Con una fuerte vida común de estilo familiar,</p>
+					<p>En comunión con la Orden y atentas con las distintas familias religiosas,</p>
+					<p>Fieles a la Iglesia y a sus Pastores.</p>
+				</div>
+
+				<p class="text-block">
+					Al desarrollar y transmitir el carisma fundacional de Nuestro Padre, hacemos presente
+					nuestra espiritualidad y subrayamos aquellos valores Evangélico, con gestos propios que
+					están en la línea Evangélica de la libertad y caridad redentora.
+				</p>
+				<p class="text-block">
+					Por eso, una Mercedaria con su vida manifiesta gran amor a la Pascua de Jesús; a la
+					Santísima Eucaristía fuente de la vida cristiana; y a María de la Merced, modelo de
+					entrega, de amor redentor y de sacrificio por los demás.
+				</p>
+			</section>
+		</div>
+
+		<div class="footer">
+			<p>
+				Instituto Nuestra Señora de la <span>Merced</span> | Hermanas Terceras Mercedarias del Niño
+				Jesús
+			</p>
+		</div>
+
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<script>
+			// Script para mejorar la interacción del menú en dispositivos móviles
+			document.addEventListener('DOMContentLoaded', function () {
+				const dropdowns = document.querySelectorAll('.dropdown');
+
+				if (window.innerWidth <= 768) {
+					dropdowns.forEach((dropdown) => {
+						dropdown.addEventListener('click', function (e) {
+							const content = this.querySelector('.dropdown-content');
+							if (content.style.maxHeight === '500px') {
+								content.style.maxHeight = '0';
+							} else {
+								content.style.maxHeight = '500px';
+							}
+							e.preventDefault();
+						});
+					});
+				}
+
+				// Animación de secciones al hacer scroll
+				const sections = document.querySelectorAll('.section');
+
+				function checkScroll() {
+					sections.forEach((section) => {
+						const sectionTop = section.getBoundingClientRect().top;
+						const windowHeight = window.innerHeight;
+
+						if (sectionTop < windowHeight * 0.75) {
+							section.classList.add('active');
+						}
+					});
+				}
+
+				// Verificar posición inicial
+				checkScroll();
+
+				// Verificar al hacer scroll
+				window.addEventListener('scroll', checkScroll);
+			});
+
+			// Header shadow on scroll
+			window.addEventListener('scroll', function () {
+				const header = document.querySelector('header');
+				if (window.scrollY > 50) {
+					header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+				} else {
+					header.style.boxShadow = '0 1px 5px rgba(0, 0, 0, 0.05)';
+				}
+			});
+		</script>
+	</body>
+</html>

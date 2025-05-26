@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden de la Merced - Instituto Nuestra Señora de la Merced</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffcc00; /* Amarillo */
+            --secondary-color: #cc0000; /* Rojo */
+            --text-color: #000000; /* Negro */
+            --bg-color: #ffffff; /* Blanco */
+            --hover-color: rgba(255, 204, 0, 0.1);
+            --merced-red: #b71c1c;
+            --merced-yellow: #ffc107;
+            --merced-black: #212121;
+            --merced-white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rockwell', sans-serif;
+        }
+
+        body, p, a, span, li, button, input, textarea {
+            font-family: 'Rockwell', sans-serif;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+        }
+        
+        body {
+            background-color: var(--merced-white);
+            color: var(--merced-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Estilos para la cabecera */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            letter-spacing: 0.05em;
+            margin-bottom: 0;
+        }
+        
+        .logo-text p {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 0.08em;
+        }
+        
+        nav {
+            background-color: var(--bg-color);
+            padding: 0 5%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--primary-color);
+            background-color: var(--hover-color);
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: var(--bg-color);
+            min-width: 250px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 16px;
+            text-transform: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--hover-color);
+            color: var(--secondary-color);
+            padding-left: 25px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            color: var(--merced-red);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--merced-yellow);
+            animation: expandWidth 1.5s ease-out forwards 0.5s;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+        
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--merced-black);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--merced-yellow);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .tab-btn:hover {
+            color: var(--merced-red);
+        }
+        
+        .tab-btn.active {
+            color: var(--merced-red);
+            font-weight: bold;
+        }
+        
+        .tab-btn.active::before {
+            transform: scaleX(1);
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .level-title {
+            text-align: center;
+            color: var(--merced-red);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .level-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--merced-yellow);
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 2rem;
+            color: var(--merced-white);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .image-container:hover .image-overlay {
+            transform: translateY(0);
+        }
+        
+        .footer {
+            background-color: var(--merced-black);
+            color: var(--merced-white);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer span {
+            color: var(--merced-yellow);
+            font-weight: bold;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                max-height: 500px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .image-container {
+                height: 300px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .level-title {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced">
+                <div class="logo-text">
+                    <h1>Instituto Nuestra Señora de la Merced</h1>
+                    <p>Arroyito, Córdoba</p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Raíces</a>
+                    <div class="dropdown-content">
+                        <a href="orden.html">Orden de la Merced</a>
+                        <a href="historia.html">Historia de la Congregación</a>
+                        <a href="fundador.html">Fundador Fray León Torres</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Nosotras</a>
+                    <div class="dropdown-content">
+                        <a href="identidad.html">Identidad</a>
+                        <a href="espiritualidad.html">Espiritualidad</a>
+                    </div>
+                </li>
+                <li><a href="proyectos.html">Nos Proyectamos</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="header">
+        <h1>Recursos</h1>
+    </div>
+    
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="inicial">Nivel Inicial</button>
+            <button class="tab-btn" data-tab="primario">Nivel Primario</button>
+            <button class="tab-btn" data-tab="secundario">Nivel Secundario</button>
+        </div>
+        
+        <div class="tab-content active" id="inicial">
+            <h2 class="level-title">Nivel Inicial</h2>
+            <div class="image-container">
+                <img src="img/inicial.png" alt="Nivel Inicial - Instituto Nuestra Señora de la Merced">
+                <div class="image-overlay">
+                    <h3>Primeros pasos en la educación mercedaria</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="primario">
+            <h2 class="level-title">Nivel Primario</h2>
+            <div class="image-container">
+                <img src="img/primario.png" alt="Nivel Primario - Instituto Nuestra Señora de la Merced">
+                <div class="image-overlay">
+                    <h3>Formando valores y conocimientos</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="secundario">
+            <h2 class="level-title">Nivel Secundario</h2>
+            <div class="image-container">
+                <img src="img/secundario.png" alt="Nivel Secundario - Instituto Nuestra Señora de la Merced">
+                <div class="image-overlay">
+                    <h3>Preparando futuros líderes con valores mercedarios</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Instituto Nuestra Señora de la <span>Merced</span> | Hermanas Terceras Mercedarias del Niño Jesús</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get the tab to activate
+                    const tabToActivate = this.getAttribute('data-tab');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show the selected tab content
+                    document.getElementById(tabToActivate).classList.add('active');
+                });
+            });
+            
+            // Animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            const animatedElements = document.querySelectorAll('.image-container, .level-title');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Script para mejorar la interacción del menú en dispositivos móviles
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('click', function(e) {
+                        const content = this.querySelector('.dropdown-content');
+                        if (content.style.maxHeight === '500px') {
+                            content.style.maxHeight = '0';
+                        } else {
+                            content.style.maxHeight = '500px';
+                        }
+                        e.preventDefault();
+                    });
+                });
+            }
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 1px 5px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>

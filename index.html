@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración de codificación y vista responsive -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Nuestra Señora de la Merced - Arroyito</title>
+    <!-- Vincula el archivo de estilos CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- CABECERA del sitio -->
+    <header>
+        <!-- Parte superior de la cabecera con logo e información -->
+        <div class="header-top">
+            <div class="logo">
+                <!-- Logo de la institución -->
+                <img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced">
+                <div class="logo-text">
+                    <!-- Nombre y ubicación de la institución -->
+                    <h1>Instituto Nuestra Señora de la Merced</h1>
+                    <p>Arroyito, Córdoba</p>
+                </div>
+            </div>
+        </div>
+        <!-- Menú de navegación -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <!-- Menú desplegable "Raíces" -->
+                <li class="dropdown">
+                    <a href="#">Raíces</a>
+                    <div class="dropdown-content">
+                        <a href="orden.html">Orden de la Merced</a>
+                        <a href="historia.html">Historia de la Congregación</a>
+                        <a href="fundador.html">Fundador Fray León Torres</a>
+                    </div>
+                </li>
+                <!-- Menú desplegable "Nosotras" -->
+                <li class="dropdown">
+                    <a href="#">Nosotras</a>
+                    <div class="dropdown-content">
+                        <a href="identidad.html">Identidad</a>
+                        <a href="espiritualidad.html">Espiritualidad</a>
+                    </div>
+                </li>
+                <li><a href="proyectos.html">Nos Proyectamos</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN HÉROE (Imagen y mensaje principal) -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Instituto Nuestra Señora de la Merced</h1>
+            <p>Educando con valores mercedarios desde el corazón de Arroyito</p>
+            <!-- Botón que lleva a la sección "Nosotras" -->
+            <a href="#nosotras" class="btn">Conocernos</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SOBRE LA INSTITUCIÓN -->
+    <section class="section" id="nosotras">
+        <div class="section-title">
+            <h2>Nuestra Institución</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <!-- Información textual sobre la misión y valores -->
+                <h3>Educación con valores mercedarios</h3>
+                <p>El Instituto Nuestra Señora de la Merced de Arroyito es una institución educativa con una larga tradición...</p>
+                <p>...compromiso con la excelencia académica y la formación humana y cristiana...</p>
+                <p>Invitamos a todas las familias a conocer nuestra propuesta educativa...</p>
+                <!-- Botón que lleva a otra sección -->
+                <a href="#identidad" class="btn" style="margin-top: 20px;">Más sobre nosotras</a>
+            </div>
+            <!-- Imagen acompañando el texto -->
+            <div class="about-image">
+                <img src="img/historiacongregación.png" alt="Instituto Nuestra Señora de la Merced">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN "RAÍCES" CON TARJETAS INFORMATIVAS -->
+    <section class="section" style="background-color: #f9f9f9;" id="raices">
+        <div class="section-title">
+            <h2>Nuestras Raíces</h2>
+        </div>
+        <div class="feature-cards">
+            <!-- Tarjeta 1: Orden de la Merced -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="img/ordenmercedaria.jpg" alt="Orden de la Merced">
+                </div>
+                <div class="card-content">
+                    <h3>Orden de la Merced</h3>
+                    <p>Fundada para la liberación de los cautivos por San Pedro Nolasco en 1218.</p>
+                    <a href="orden.html" class="btn" style="font-size: 14px;">Leer más</a>
+                </div>
+            </div>
+            <!-- Tarjeta 2: Fray León Torres -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="img/leontorres.jpg" alt="Fray León Torres">
+                </div>
+                <div class="card-content">
+                    <h3>Fray León Torres</h3>
+                    <p>Fundador de las Hermanas Mercedarias del Niño Jesús.</p>
+                    <a href="fundador.html" class="btn" style="font-size: 14px;">Leer más</a>
+                </div>
+            </div>
+            <!-- Tarjeta 3: Historia de la congregación -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="img/historiacongregación.png" alt="Historia">
+                </div>
+                <div class="card-content">
+                    <h3>Nuestra Historia</h3>
+                    <p>Un camino de servicio y entrega desde nuestra fundación.</p>
+                    <a href="historia.html" class="btn" style="font-size: 14px;">Leer más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE LLAMADO A LA ACCIÓN -->
+    <section class="cta">
+        <h2>Forma parte de nuestra comunidad</h2>
+        <p>Conocé nuestra propuesta educativa y los valores que nos distinguen.</p>
+        <!-- Botón que abre el correo electrónico -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@hermanasmercedarias.com" class="btn" style="background-color: var(--secondary-color); color: white;">Contáctanos</a>
+    </section>
+
+    <!-- PIE DE PÁGINA (footer) -->
+    <footer>
+        <div class="footer-content">
+            <!-- Columna 1: Información del instituto -->
+            <div class="footer-column">
+                <h3>Instituto Nuestra Señora de la Merced</h3>
+                <p>Educación con valores mercedarios desde el corazón de Arroyito, Córdoba.</p>
+            </div>
+            <!-- Columna 2: Enlaces rápidos -->
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#raices">Raíces</a></li>
+                    <li><a href="#nosotras">Nosotras</a></li>
+                    <li><a href="#proyectos">Nos Proyectamos</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <!-- Columna 3: Información de contacto -->
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <div class="contact-info">
+                    <span>Dirección:</span>
+                    <p>9 de Julio 465, Arroyito, Córdoba</p>
+                </div>
+                <div class="contact-info">
+                    <span>Teléfono:</span>
+                    <p>(03576) 420000</p>
+                </div>
+                <div class="contact-info">
+                    <span>Email:</span>
+                    <p>info@institutomerced.edu.ar</p>
+                </div>
+            </div>
+        </div>
+        <!-- Derechos de autor -->
+        <div class="copyright">
+            <p>&copy; 2025 Instituto Nuestra Señora de la Merced - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- BOTÓN DE WHATSAPP flotante -->
+    <a href="https://api.whatsapp.com/send/?phone=5493513507691&text&type=phone_number&app_absent=0" target="_blank" class="whatsapp-button" aria-label="Contactar por WhatsApp">
+        <img src="img/WhatsApp.svg.webp" alt="WhatsApp" />
+    </a>
+
+    <!-- BOTÓN PARA VOLVER ARRIBA -->
+    <div class="scroll-to-top">↑</div>
+
+    <!-- Archivo JavaScript principal -->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origen - Instituto Nuestra Señora de la Merced</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffcc00; /* Amarillo */
+            --secondary-color: #cc0000; /* Rojo */
+            --text-color: #000000; /* Negro */
+            --bg-color: #ffffff; /* Blanco */
+            --hover-color: rgba(255, 204, 0, 0.1);
+            --merced-red: #b71c1c;
+            --merced-yellow: #ffc107;
+            --merced-black: #212121;
+            --merced-white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rockwell', sans-serif;
+        }
+
+        body, p, a, span, li, button, input, textarea {
+            font-family: 'Rockwell', sans-serif;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+        }
+        
+        body {
+            background-color: var(--merced-white);
+            color: var(--merced-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        /* Estilos para la cabecera - ACTUALIZADOS */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            letter-spacing: 0.05em;
+            margin-bottom: 0;
+        }
+        
+        .logo-text p {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 0.08em;
+        }
+        
+        nav {
+            background-color: var(--bg-color);
+            padding: 0 5%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--primary-color);
+            background-color: var(--hover-color);
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: var(--bg-color);
+            min-width: 250px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 16px;
+            text-transform: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--hover-color);
+            color: var(--secondary-color);
+            padding-left: 25px;
+        }
+        
+        /* Estilos para la sección héroe - MANTENER ORIGINAL */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/escuela.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--merced-white);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--merced-white);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--merced-yellow);
+            color: var(--merced-black);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #e0a800;
+            transform: translateY(-3px);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--merced-red);
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--merced-yellow);
+            animation: expandBorder 2s ease forwards;
+        }
+        
+        @keyframes expandBorder {
+            to {
+                width: 100%;
+                left: 0;
+            }
+        }
+        
+        .container h1 {
+            color: var(--merced-red);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 1s ease forwards 0.5s;
+        }
+        
+        .escudo {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .escudo-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--merced-yellow);
+            padding: 10px;
+            background-color: var(--merced-white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 1s ease forwards 1s;
+        }
+        
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .text-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-left: 5px solid var(--merced-red);
+            padding: 1.5rem;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInLeft 1s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        
+        .text-section:nth-child(even) {
+            border-left: none;
+            border-right: 5px solid var(--merced-yellow);
+            border-radius: 5px 0 0 5px;
+            transform: translateX(20px);
+            animation: fadeInRight 1s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .text-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .text-section p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: var(--merced-red);
+            font-weight: 600;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--merced-black);
+            border-left: 3px solid var(--merced-yellow);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .date {
+            color: var(--merced-red);
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--merced-yellow);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2s;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Estilos responsivos para la cabecera - ACTUALIZADOS */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                max-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera ACTUALIZADA -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced">
+                <div class="logo-text">
+                    <h1>Instituto Nuestra Señora de la Merced</h1>
+                    <p>Arroyito, Córdoba</p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Raíces</a>
+                    <div class="dropdown-content">
+                        <a href="orden.html">Orden de la Merced</a>
+                        <a href="historia.html">Historia de la Congregación</a>
+                        <a href="fundador.html">Fundador Fray León Torres</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Nosotras</a>
+                    <div class="dropdown-content">
+                        <a href="identidad.html">Identidad</a>
+                        <a href="espiritualidad.html">Espiritualidad</a>
+                    </div>
+                </li>
+                <li><a href="proyectos.html">Nos Proyectamos</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO ORIGINAL MANTENIDO -->
+    <div class="container">
+        <div class="header">
+            <h1>Nuestro Origen</h1>
+        </div>
+        
+        <div class="escudo">
+            <div>
+                <img src="img/ordenmercedaria.jpg" alt="Logo Instituto Nuestra Señora de la Merced" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="text-section" style="--i:1">
+                <p>Para comprender la fuerza que acompañó y animó todo el pensamiento y los actos, del <span class="highlight">Venerable Padre José León Torres</span>, nuestro fundador, es necesario ubicarlo dentro del fecundante impulso carismático de <span class="highlight">San Pedro Nolasco</span>, quien, identificado con la Obra Salvadora de Cristo e interpelado por la situación de opresión de su tiempo, funda en <span class="date">1218</span>, en España, la <span class="highlight">Orden de la Merced</span>. Junto a un grupo de compañeros, se pone al servicio de la liberación de hombres y mujeres sometidos a cautiverio por la fe.</p>
+            </div>
+            
+            <div class="text-section" style="--i:2">
+                <p>El flagelo de la cautividad en el siglo XIII era considerado como un hecho gravísimo por la influencia religiosa. El riesgo mayor del cautiverio para un cristiano prisionero en poder de los sarracenos, era el peligro de renegar de la verdadera fe.</p>
+            </div>
+            
+            <div class="text-section" style="--i:3">
+                <p>En este contexto, surge Pedro Nolasco con un grupo de compañeros laicos, que tenían devoción a Cristo que nos redimió con su preciosa Sangre.</p>
+                <p>Identificados y siguiendo a Cristo Redentor, con desprendimiento juvenil admirable se despojaron de sus propios bienes y lo dieron todo para la redención.</p>
+            </div>
+            
+            <div class="text-section" style="--i:4">
+                <p>Tras 15 años de hacer presente la misericordia de Dios, de redimir cristianos, veían que el número de cautivos se acrecentaba. Fue, entonces, que, Nolasco en fervorosa oración tuvo la inspiración divina de poder continuar la Obra de Dios. La noche del <span class="date">1 de agosto de 1218</span> ocurrió la intervención especial de <span class="highlight">María Santísima</span> en la vida de Pedro Nolasco. Esta experiencia personal mariana iluminó su inteligencia y movió su voluntad para convertir el grupo de laicos redentores en una Orden religiosa redentora.</p>
+            </div>
+            
+            <div class="text-section" style="--i:5">
+                <p>Contó con la aprobación de la Iglesia y el amparo del Rey de Aragón, quien reconoció a la nueva Orden, por el derecho civil de su reino y le entregó el escudo, caracterizado por: las cuatro barras en campo de oro que, unido a la cruz de la catedral, formó desde entonces el escudo propio de la Orden.</p>
+            </div>
+            
+            <div class="text-section" style="--i:6">
+                <p>El escudo mercedario es la forma de materialización del anhelo heroico del apóstol: la caridad de Cristo nos urge, es un imperativo el más sublime en perpetua vigencia.</p>
+                <p class="quote">"No hay mayor caridad que dar la vida por sus hermanos"</p>
+            </div>
+            
+            <div class="text-section" style="--i:7">
+                <p><span class="highlight">San Pedro Nolasco</span>, entregó su vida donada totalmente, una vida gastada y ofrecida por la liberación del hermano cautivo, siempre a favor y comprometido con la libertad y la dignidad de quienes se hallaban oprimidos, al estilo de Cristo Redentor, con el que identificó como el paradigma de un camino de entrega redentora, hasta dar su vida, con la profesión del cuarto voto.</p>
+            </div>
+            
+            <div class="text-section" style="--i:8">
+                <p>Nuestro origen está enraizado en el doble amor que experimentó y proyectó Pedro Nolasco: el de Cristo Jesús Redentor y el de los hermanos cautivos, a quienes como Mercedarios, reconocemos como los hermanos de Jesús, y hermanos nuestros, los verdaderos pobres de la tierra. Y, al mismo tiempo a <span class="highlight">María, Madre de la Merced</span>, se constituye para cada corazón Mercedarios en Madre de la Gracia, Madre de la Compasión, inspiradora y garantía de la acción redentora.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Instituto Nuestra Señora de la Merced - Raíces Mercedarias</p>
+        </div>
+    </div>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Script para mejorar la interacción del menú en dispositivos móviles
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('click', function(e) {
+                        const content = this.querySelector('.dropdown-content');
+                        if (content.style.maxHeight === '500px') {
+                            content.style.maxHeight = '0';
+                        } else {
+                            content.style.maxHeight = '500px';
+                        }
+                        e.preventDefault();
+                    });
+                });
+            }
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 1px 5px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>

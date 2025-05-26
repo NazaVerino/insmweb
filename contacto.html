@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Instituto Nuestra Señora de la Merced</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffcc00; /* Amarillo */
+            --secondary-color: #cc0000; /* Rojo */
+            --text-color: #000000; /* Negro */
+            --bg-color: #ffffff; /* Blanco */
+            --hover-color: rgba(255, 204, 0, 0.1);
+            --rojo-mercedario: #c41e3a;
+            --amarillo-mercedario: #f9ca24;
+            --negro: #222;
+            --blanco: #fff;
+            --gris-claro: #f8f8f8;
+            --gris-medio: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rockwell', sans-serif;
+        }
+
+        body, p, a, span, li, button, input, textarea {
+            font-family: 'Rockwell', sans-serif;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+        }
+        
+        body {
+            background-color: var(--blanco);
+            color: var(--negro);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Estilos para la cabecera - ACTUALIZADOS */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            letter-spacing: 0.05em;
+            margin-bottom: 0;
+        }
+        
+        .logo-text p {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 0.08em;
+        }
+        
+        nav {
+            background-color: var(--bg-color);
+            padding: 0 5%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--primary-color);
+            background-color: var(--hover-color);
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: var(--bg-color);
+            min-width: 250px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 16px;
+            text-transform: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--hover-color);
+            color: var(--secondary-color);
+            padding-left: 25px;
+        }
+        
+        /* Estilos originales de la página */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            background-color: var(--blanco);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            color: var(--rojo-mercedario);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--amarillo-mercedario);
+            animation: expandWidth 1.5s ease-out forwards 0.5s;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .section-title {
+            color: var(--rojo-mercedario);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--amarillo-mercedario);
+            transition: width 0.3s ease;
+        }
+        
+        .section-title:hover::after {
+            width: 100%;
+        }
+        
+        .contact-data {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--gris-claro);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            animation: fadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .contact-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            color: var(--rojo-mercedario);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-item strong {
+            color: var(--rojo-mercedario);
+            display: inline-block;
+            width: 80px;
+        }
+        
+        .contact-item a {
+            color: var(--negro);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: var(--rojo-mercedario);
+        }
+        
+        .contact-message {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .form-container {
+            background-color: var(--gris-claro);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            animation: fadeIn 1s ease-out 0.9s forwards;
+            opacity: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gris-medio);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--rojo-mercedario);
+            box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .captcha-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--rojo-mercedario);
+            color: var(--blanco);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #a51930;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer span {
+            color: var(--amarillo-mercedario);
+            font-weight: bold;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        /* Estilos responsivos para la cabecera - ACTUALIZADOS */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                max-height: 500px;
+            }
+            
+            .container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Cabecera ACTUALIZADA -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced">
+                <div class="logo-text">
+                    <h1>Instituto Nuestra Señora de la Merced</h1>
+                    <p>Arroyito, Córdoba</p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Raíces</a>
+                    <div class="dropdown-content">
+                        <a href="orden.html">Orden de la Merced</a>
+                        <a href="historia.html">Historia de la Congregación</a>
+                        <a href="fundador.html">Fundador Fray León Torres</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Nosotras</a>
+                    <div class="dropdown-content">
+                        <a href="identidad.html">Identidad</a>
+                        <a href="espiritualidad.html">Espiritualidad</a>
+                    </div>
+                </li>
+                <li><a href="proyectos.html">Nos Proyectamos</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="header">
+        <h1>Contacto</h1>
+    </div>
+    
+    <div class="container">
+        <div class="contact-info">
+            <h2 class="section-title">DATOS DE CONTACTO</h2>
+            
+            <div class="contact-data">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>E-mail:</strong>
+                        <a href="mailto:info@hermanasmercedarias.com">info@hermanasmercedarias.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Teléfono:</strong>
+                        <br>
+                        <a href="tel:+543514920761">+54 351 4920761</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Dirección:</strong>
+                        <br>
+                        <span>9 de Julio 465, Arroyito, Córdoba</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps?q=-31.418565,-63.049159&z=15&output=embed" width="100%" height="250" style="border:0; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h2 class="section-title">FORMULARIO DE CONTACTO</h2>
+            
+            <div class="contact-message">
+                Envíanos un mensaje y a la brevedad nos pondremos en contacto.
+            </div>
+            
+            <div class="form-container">
+                <form id="contactForm" action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo *" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail *" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono / WhatsApp *" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea class="form-control" id="consulta" name="consulta" placeholder="Consulta *" required></textarea>
+                    </div>
+                    
+                    <div class="captcha-container">
+                        <div class="captcha-box" style="display: flex; align-items: center;">
+                            <div style="border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; border-radius: 4px; display: flex; align-items: center; width: fit-content;">
+                                <input type="checkbox" id="captchaCheckbox" style="margin-right: 8px;">
+                                <label for="captchaCheckbox" style="margin-right: 20px;">No soy un robot</label>
+                                <div style="width: 60px; height: 60px; background-color: #fff; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                                    <img src="img/captcha.png" alt="CAPTCHA" style="max-width: 90%; max-height: 90%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Consulta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Instituto Nuestra Señora de la <span>Merced</span> | Hermanas Terceras Mercedarias del Niño Jesús</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form validation
+            const contactForm = document.getElementById('contactForm');
+            const captchaCheckbox = document.getElementById('captchaCheckbox');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Check captcha
+                    if (!captchaCheckbox.checked) {
+                        alert('Por favor, complete el captcha antes de enviar el formulario.');
+                        return;
+                    }
+                    
+                    // Form validation
+                    const nombre = document.getElementById('nombre').value;
+                    const email = document.getElementById('email').value;
+                    const telefono = document.getElementById('telefono').value;
+                    const consulta = document.getElementById('consulta').value;
+                    
+                    if (!nombre || !email || !telefono || !consulta) {
+                        alert('Por favor, complete todos los campos requeridos.');
+                        return;
+                    }
+                    
+                    // Simulate form submission
+                    alert('¡Gracias por su consulta! Nos comunicaremos a la brevedad.');
+                    contactForm.reset();
+                    captchaCheckbox.checked = false;
+                });
+            }
+            
+            // Animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            const animatedElements = document.querySelectorAll('.section-title, .contact-data, .form-container');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Script para mejorar la interacción del menú en dispositivos móviles
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('click', function(e) {
+                        const content = this.querySelector('.dropdown-content');
+                        if (content.style.maxHeight === '500px') {
+                            content.style.maxHeight = '0';
+                        } else {
+                            content.style.maxHeight = '500px';
+                        }
+                        e.preventDefault();
+                    });
+                });
+            }
+            
+            // Header shadow on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.boxShadow = '0 1px 5px rgba(0, 0, 0, 0.05)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

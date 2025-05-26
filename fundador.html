@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden de la Merced - Instituto Nuestra Señora de la Merced</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffcc00; /* Amarillo */
+            --secondary-color: #cc0000; /* Rojo */
+            --text-color: #000000; /* Negro */
+            --bg-color: #ffffff; /* Blanco */
+            --hover-color: rgba(255, 204, 0, 0.1);
+            --merced-red: #b71c1c;
+            --merced-yellow: #ffc107;
+            --merced-black: #212121;
+            --merced-white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rockwell', sans-serif;
+        }
+
+        body, p, a, span, li, button, input, textarea {
+            font-family: 'Rockwell', sans-serif;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+        }
+        
+        body {
+            background-color: var(--merced-white);
+            color: var(--merced-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        /* Estilos para la cabecera */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            letter-spacing: 0.05em;
+            margin-bottom: 0;
+        }
+        
+        .logo-text p {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 0.08em;
+        }
+        
+        nav {
+            background-color: var(--bg-color);
+            padding: 0 5%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--primary-color);
+            background-color: var(--hover-color);
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: var(--bg-color);
+            min-width: 250px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 16px;
+            text-transform: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--hover-color);
+            color: var(--secondary-color);
+            padding-left: 25px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--merced-red);
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--merced-yellow);
+            animation: expandBorder 2s ease forwards;
+        }
+        
+        @keyframes expandBorder {
+            to {
+                width: 100%;
+                left: 0;
+            }
+        }
+        
+        .container h1 {
+            color: var(--merced-red);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 1s ease forwards 0.5s;
+        }
+        
+        .founder-image {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .founder-img-container {
+            width: 220px;
+            height: 220px;
+            border-radius: 5%;
+            border: 3px solid var(--merced-yellow);
+            padding: 5px;
+            background-color: var(--merced-white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 1s ease forwards 1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .inspirational-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 2rem auto;
+            color: var(--merced-black);
+            border-left: 5px solid var(--merced-yellow);
+            padding: 1rem 2rem;
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 1.2s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .text-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-left: 5px solid var(--merced-red);
+            padding: 1.5rem;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInLeft 1s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        
+        .text-section:nth-child(even) {
+            border-left: none;
+            border-right: 5px solid var(--merced-yellow);
+            border-radius: 5px 0 0 5px;
+            transform: translateX(20px);
+            animation: fadeInRight 1s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .text-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .text-section p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: var(--merced-red);
+            font-weight: 600;
+        }
+        
+        .divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--merced-yellow), transparent);
+            margin: 3rem 0;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.5s;
+        }
+        
+        .divider::before {
+            content: '✝';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--merced-white);
+            padding: 0 1rem;
+            color: var(--merced-red);
+            font-size: 1.5rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--merced-black);
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.5s;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--merced-yellow);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2s;
+        }
+        
+        .icon-separator {
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--merced-red);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.5s;
+        }
+        
+        .icon-separator i {
+            font-size: 1.8rem;
+        }
+        
+        @media (min-width: 768px) {
+            .content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Estilos responsivos para la cabecera */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                max-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera con menú del primer documento -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced">
+                <div class="logo-text">
+                    <h1>Instituto Nuestra Señora de la Merced</h1>
+                    <p>Arroyito, Córdoba</p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Raíces</a>
+                    <div class="dropdown-content">
+                        <a href="orden.html">Orden de la Merced</a>
+                        <a href="historia.html">Historia de la Congregación</a>
+                        <a href="fundador.html">Fundador Fray León Torres</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Nosotras</a>
+                    <div class="dropdown-content">
+                        <a href="identidad.html">Identidad</a>
+                        <a href="espiritualidad.html">Espiritualidad</a>
+                    </div>
+                </li>
+                <li><a href="proyectos.html">Nos Proyectamos</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido del segundo documento mantenido -->
+    <div class="container">
+        <div class="header">
+            <h1>Venerable Fray León Torres</h1>
+        </div>
+        
+        <div class="founder-image">
+            <div class="founder-img-container">
+                <!-- Logo del Instituto como placeholder de la imagen de Fray León Torres -->
+                <img src="img/leontorres.jpg" alt="Logo Instituto Nuestra Señora de la Merced" style="width: 80%; height: 80%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="inspirational-quote">
+            "Enriquecer la inteligencia de la joven con conocimientos del saber humano, y, sobre todo, formar su corazón en los principios de la religión y moral cristiana"
+        </div>
+        
+        <div class="content">
+            <div class="text-section" style="--i:1">
+                <p>Movido por su corazón redentor, el <span class="highlight">Padre Torres</span> consideró que, esta nueva congregación de esclavitud podría ser superada con la instrucción y la educación de inspiración cristiana, manifestando que para esto era necesario: <span class="highlight">"Enriquecer la inteligencia de la joven con conocimientos del saber humano, y, sobre todo, formar su corazón en los principios de la religión y moral cristiana"</span>.</p>
+            </div>
+            
+            <div class="text-section" style="--i:2">
+                <p>Con la certeza de que, la dimensión de la formación integral de la persona, es el instrumento necesario para fortalecer la vida de fe de los cristianos de la sociedad argentina, el Padre Fundador, ofreció un servicio de educación redentora, como respuesta a la necesidad de formar verdaderos cristianos, desde los valores profundamente humanos y comprometidos con la historia, capaces de provocar procesos de cambio y transformación que ayuden a desarrollar una sociedad mejor y establecer relaciones que humanizan.</p>
+            </div>
+            
+            <div class="text-section" style="--i:3">
+                <p>El Padre Torres, fue respuesta a la necesidad de acompañar a las familias en la educación de la vida cristiana, ya que la fe estaba en peligro, debido al avance de ideologías antievangélicas.</p>
+            </div>
+            
+            <div class="text-section" style="--i:4">
+                <p>La presencia de esta nueva Familia Religiosa en la sociedad cordobesa, animada del espíritu redentor que el Padre Torres, imprimió en su Obra, favoreció a promover la formación de niños y jóvenes desde una cosmovisión cristiana de la vida y el mundo, a través de, la creación de escuelas católicas, que, surgieron en contraposición al pensamiento de un materialismo ateo, impulsado desde las altas esferas del gobierno de su tiempo.</p>
+            </div>
+            
+            <div class="text-section" style="--i:5">
+                <p>El carisma de fundador que recibió el Padre José León, contribuyó en su tiempo, a hacer frente al laicismo que se imponía como nuevo estilo de vida y al impacto de la cultura liberal de su época que, con un naturalismo anticristiano, se apoderaba de las costumbres de la sociedad.</p>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="subtitle">El carisma fundacional compartido para la misión</div>
+        
+        <div class="content">
+            <div class="text-section" style="--i:6">
+                <p>Concretar la fundación llevó al Padre Torres a asumir el compromiso de la formación de las primeras Hermanas, en su identidad como religiosas mercedarias del Niño Jesús para una proyección del carisma en la misión. Para impregnar el estilo propio de ser mercedaria en la misión redentora, el padre Torres inculcó la piedad e identificación con Cristo redentor, amor filial a María de la Merced y profunda devoción a la Eucaristía. Así mismo, las formó en la observancia de la Regla como orientación de su vida consagrada al servicio del reino; el ejercicio de las virtudes humanas y cristianas y la cordial adhesión a la Iglesia y sentido de pertenencia a la Orden mercedaria.</p>
+            </div>
+            
+            <div class="text-section" style="--i:7">
+                <p>Comprendiendo el espíritu redentor que el Padre Torres, quería imprimir en la misión apostólica de la nueva Congregación, en la homilía, de inauguración del primer colegio, en Alta Córdoba, monseñor Castellano, expresa a las primeras Hermanas fundadoras, que su misión, es la de <span class="highlight">"enseñar en las escuelas..., enjugar las lágrimas del que llora, restablecer la paz en los espíritus que sufren, son obras del Señor a las que vosotras os dedicaréis"</span>.</p>
+            </div>
+            
+            <div class="text-section" style="--i:8">
+                <p>Para este fin, el Padre fundador, las formó educadoras con actitud de servicio y con sólida preparación pedagógica y religiosa, impregnadas de la espiritualidad Mercedaria del Niño Jesús. Igualmente, las capacitó para asumir el servicio educativo desde una dimensión liberadora, considerando todos los aspectos organizacionales y estructurales para el buen funcionamiento de los colegios por él fundados.</p>
+            </div>
+            
+            <div class="text-section" style="--i:9">
+                <p>Por ser el Padre Torres religioso de una Orden redentora, experimentó de manera viva, la certeza y el anhelo de ofrecer una auténtica y evangélica formación integral, como acto de caridad redentora, capaz de liberar de la ignorancia y del pecado, especialmente a aquellas personas, que corrían el riesgo de perder la fe y la dignidad.</p>
+            </div>
+            
+            <div class="text-section" style="--i:10">
+                <p>La educación en la vida de fe, implica la formación de la conciencia de que la esclavitud del pecado es de donde surgen todas las otras congregaciones de esclavitud. Desconocer la verdad de los principios evangélicos, necesariamente conduce a la injusticia, la opresión, el hambre, la violencia, la muerte, hoy instaladas como una nueva cultura.</p>
+            </div>
+            
+            <div class="text-section" style="--i:11">
+                <p>La inquietud del Padre Torres, estaba centrada en la necesidad de brindar una educación en la fe, a fin de que ilumine el quehacer de la vida personal y social.</p>
+            </div>
+            
+            <div class="text-section" style="--i:12">
+                <p>Además, manifestó, en varias oportunidades, su sensibilidad por las situaciones de marginación que produce la ignorancia, muchas veces, al referirse a "las muchachitas pobres" que se encontraban en hogares atendidos por las Religiosas, aconsejaba que no sólo se les dieran techo y comida, sino que asumieran la responsabilidad de preparar y capacitar para la vida, a través de las tareas y oficios como medios de superación y de herramienta de trabajo para el futuro.</p>
+            </div>
+            
+            <div class="text-section" style="--i:13">
+                <p>Esta manera de vivir la misión, expresa la búsqueda de la dignificación de la persona con espíritu evangélico, como la de dar respuestas a las necesidades de redención de la humanidad, desde la identificación con Cristo redentor, quien se encarnó para anunciar a los pobres la Buena Nueva de la salvación y proclamar a los cautivos la liberación. Precisamente, en esta idea, se comprende el sentido de la espiritualidad del Padre Torres, en una adhesión incondicional a la Obra de Cristo Redentor, encarnado en su fundador Pedro Nolasco.</p>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="subtitle">La misión educativa mercedaria, en clave de redención</div>
+        
+        <div class="content">
+            <div class="text-section" style="--i:14">
+                <p>La fidelidad al carisma fundacional y los desafíos de los nuevos tiempos han llevado a la Congregación a plantearse nuevos modos de dar respuestas donde la vida clama, desde su inició ofreció la educación formal en colegios, en todos los niveles de enseñanza y también asistemática, en Obras de pastoral social, en Centros de misión, de promoción humana y de evangelización.</p>
+            </div>
+            
+            <div class="text-section" style="--i:15">
+                <p>Como portadoras del <span class="highlight">"Proyecto Educativo Redentor"</span> que el Venerable Padre legó a sus hijas, las religiosas intentan repensar la misión como Mercedarias del Niño Jesús, insertas en el corazón de la Iglesia, en las raíces de la Orden y en la realidad de la gente.</p>
+            </div>
+            
+            <div class="text-section" style="--i:16">
+                <p>Desde el estilo propio de ser mercedarias en la Iglesia, se busca que todas las Obras, sean signos y presencia de redención y anuncio de salvación, en clave liberadora, para quienes son víctimas de opresión, a causa de la desacralización del valor de la dignidad de toda vida humana, como la violencia en todas sus congregaciones, abandonos, soledad, desvalorización, ignorancia.</p>
+            </div>
+            
+            <div class="text-section" style="--i:17">
+                <p>En este mundo de contrastes y ambigüedades, en que las nuevas cautividades impactan fuertemente, provocando la pérdida de sentido, la creciente secularización y el relativismo de nuestra cultura, las instituciones mercedarias se sienten llamadas a renovar la mirada en el Dios que sigue actuando su historia de liberación, en los acontecimientos de la vida cotidiana y de la historia.</p>
+            </div>
+        </div>
+        
+        <div class="icon-separator">
+            <i class="fas fa-cross"></i>
+        </div>
+        
+        <div class="footer">
+            <p>Instituto Nuestra Señora de la Merced - Legado del Venerable Fray León Torres</p>
+        </div>
+    </div>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Script para mejorar la interacción del menú en dispositivos móviles
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('click', function(e) {
+                        const content = this.querySelector('.dropdown-content');
+                        if (content.style.maxHeight === '500px') {
+                            content.style.maxHeight = '0';
+                        } else {
+                            content.style.maxHeight = '500px';
+                        }
+                        e.preventDefault();
+                    });
+                });
+            }
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 1px 5px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia - Instituto Nuestra Señora de la Merced</title>
+    <style>
+        :root {
+        --primary-color: #ffcc00; /* Amarillo */
+        --secondary-color: #cc0000; /* Rojo */
+        --text-color: #000000; /* Negro */
+        --bg-color: #ffffff; /* Blanco */
+        --hover-color: rgba(255, 204, 0, 0.1);
+        --merced-red: #b71c1c;
+        --merced-yellow: #ffc107;
+        --merced-black: #212121;
+        --merced-white: #ffffff;
+        }
+
+        /* Reset y tipografías */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rockwell', sans-serif;
+        }
+        body, p, a, span, li, button, input, textarea {
+        font-family: 'Rockwell', sans-serif;
+        font-weight: 400;
+        }
+        h1, h2, h3, h4, h5, h6 {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 600;
+        }
+
+        body {
+        background-color: var(--merced-white);
+        color: var(--merced-black);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-size: 18px;
+        letter-spacing: 0.02em;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+        }
+
+        /* Cabecera con menú */
+        header {
+        background-color: var(--bg-color);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        }
+        .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 5%;
+        border-bottom: 1px solid #eee;
+        }
+        .logo {
+        display: flex;
+        align-items: center;
+        }
+        .logo img {
+        height: 50px;
+        margin-right: 15px;
+        transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+        transform: scale(1.02);
+        }
+        .logo-text h1 {
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--secondary-color);
+        letter-spacing: 0.05em;
+        margin-bottom: 0;
+        }
+        .logo-text p {
+        font-size: 16px;
+        color: #666;
+        letter-spacing: 0.08em;
+        }
+        nav {
+        background-color: var(--bg-color);
+        padding: 0 5%;
+        }
+        .nav-links {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        }
+        .nav-links li {
+        position: relative;
+        }
+        .nav-links a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid transparent;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        }
+        .nav-links a:hover {
+        color: var(--secondary-color);
+        border-bottom: 1px solid var(--primary-color);
+        background-color: var(--hover-color);
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+        .dropdown-content {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        background-color: var(--bg-color);
+        min-width: 250px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        z-index: 1;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        }
+        .dropdown:hover .dropdown-content {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        }
+        .dropdown-content a {
+        padding: 12px 20px;
+        display: block;
+        text-decoration: none;
+        color: var(--text-color);
+        transition: all 0.3s ease;
+        border-bottom: 1px solid #f5f5f5;
+        font-size: 16px;
+        text-transform: none;
+        letter-spacing: 0.05em;
+        }
+        .dropdown-content a:hover {
+        background-color: var(--hover-color);
+        color: var(--secondary-color);
+        padding-left: 25px;
+        }
+
+        /* Estilo del título de sección */
+        .header {
+        text-align: center;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid var(--merced-red);
+        }
+        .header::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background-color: var(--merced-yellow);
+        animation: expandBorder 2s ease forwards;
+        }
+        @keyframes expandBorder {
+        to {
+            width: 100%;
+            left: 0;
+        }
+        }
+        .container h1 {
+        color: var(--merced-red);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeInDown 1s ease forwards 0.5s;
+        }
+        @keyframes fadeInDown {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
+        /* Secciones de texto */
+        .text-section {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-left: 5px solid var(--merced-red);
+        padding: 1.5rem;
+        border-radius: 0 5px 5px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: fadeInLeft 1s ease forwards;
+        animation-delay: calc(0.2s * var(--i));
+        margin-bottom: 2rem;
+        }
+        .text-section:nth-child(even) {
+        border-left: none;
+        border-right: 5px solid var(--merced-yellow);
+        border-radius: 5px 0 0 5px;
+        transform: translateX(20px);
+        animation: fadeInRight 1s ease forwards;
+        animation-delay: calc(0.2s * var(--i));
+        }
+        @keyframes fadeInLeft {
+        to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+        to { opacity: 1; transform: translateX(0); }
+        }
+        .text-section p {
+        margin-bottom: 1rem;
+        text-align: justify;
+        }
+        .highlight {
+        color: var(--merced-red);
+        font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+        margin-top: 3rem;
+        text-align: center;
+        padding-top: 1rem;
+        border-top: 1px solid var(--merced-yellow);
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 2s;
+        }
+        @keyframes fadeIn {
+        to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+        .header-top { flex-direction: column; text-align: center; }
+        .logo { margin-bottom: 15px; }
+        .nav-links { flex-direction: column; }
+        .dropdown-content {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .dropdown:hover .dropdown-content { max-height: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced">
+                <div class="logo-text">
+                    <h1>Instituto Nuestra Señora de la Merced</h1>
+                    <p>Arroyito, Córdoba</p>
+                </div>
+            </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Raíces</a>
+                    <div class="dropdown-content">
+                        <a href="orden.html">Orden de la Merced</a>
+                        <a href="historia.html">Historia de la Congregación</a>
+                        <a href="fundador.html">Fundador Fray León Torres</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Nosotras</a>
+                    <div class="dropdown-content">
+                        <a href="identidad.html">Identidad</a>
+                        <a href="espiritualidad.html">Espiritualidad</a>
+                    </div>
+                </li>
+                <li><a href="proyectos.html">Nos Proyectamos</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Nuestra Historia</h1>
+        </div>
+        
+        <div class="founder-image">
+            <div class="logo-container">
+                <!-- Logo del Instituto -->
+                <img src="img/logoinsm.png" alt="Logo Instituto Nuestra Señora de la Merced" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="text-section" style="--i:1">
+            <p>La mitad del siglo XIX, caracterizó a nuestro país, Argentina, por ser un tiempo de grandes definiciones políticas, de luchas por la organización nacional, y, particularmente, de apertura a nuevas ideologías que impactaron sobre todo en el sistema educativo.</p>
+        </div>
+        
+        <div class="text-section" style="--i:2">
+            <p>Atento a las nuevas situaciones que sufría la sociedad de su tiempo, debido al impacto del pensamiento liberal que ponía en peligro la fe y la vida cristiana, el <span class="highlight">Padre Torres</span>, movido por el espíritu redentor y su compromiso con la historia, se lanzó a buscar caminos de esperanza para responder con fuerza y valentía en esos tiempos difíciles.</p>
+        </div>
+        
+        <div class="text-section" style="--i:3">
+            <p>En este contexto se desarrolló la vida del mercedario, <span class="highlight">Padre José León Torres</span>, quien, movido por el cuarto voto mercedario, siente que es el momento de la entrega y de estar alegremente dispuesto a dar la vida por los nuevos cautivos de su tiempo.</p>
+        </div>
+        
+        <div class="text-section" style="--i:4">
+            <p>Surge la idea de responder desde el espíritu redentor a las nuevas situaciones. Confiado en la oración y entregado a la voluntad de Dios, en el especial momento de la consagración, en la Eucaristía, siente el llamado de Dios a dar una respuesta desde la caridad redentora, a esta nueva esclavitud de la ignorancia en general, y la religiosa en particular.</p>
+        </div>
+        
+        <div class="text-section" style="--i:5">
+            <p>Su corazón entregado y dispuesto dice sí, y se lanza al gran desafío de educar a la niñez, a la juventud y a la mujer, con la certeza de que la construcción de una nueva sociedad es posible.</p>
+        </div>
+        
+        <div class="text-section" style="--i:6">
+            <p>Como Fundador, se caracterizó por estar animado de una gran espiritualidad. Se destacó por su fe inquebrantable; su identificación con Cristo Redentor, su devoción a María de la Merced y fidelidad a la Iglesia. Ejemplo de Maestro, enseñó con su palabra y su testimonio de vida, su amor y respeto de Padre que acompaña, y su presencia de hermano y amigo para con todos.</p>
+        </div>
+        
+        <div class="text-section" style="--i:7">
+            <p>Apóstol y profeta, se comprometió en el anuncio del Evangelio de la libertad y caridad, la extensión del Reino y en consagrar su vida a trabajar por la evangelización liberadora que humaniza y dignifica.</p>
+        </div>
+        
+        <div class="text-section" style="--i:8">
+            <p>Educador incansable, acompañó desde su ministerio, en la formación y enseñanza, con compasión y misericordia en las diversas situaciones de cautividad.</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="date-marker">1887</div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="subtitle">Fundación de la Congregación</div>
+        
+        <div class="text-section" style="--i:9">
+            <p>El día <span class="important-date">10 de mayo de 1887</span>, mientras celebraba la Eucaristía, el <span class="highlight">Venerable Padre José León Torres</span> (O. de M.), recibe, en el momento de la consagración la "idea" de fundar la Congregación de Hermanas Terceras Mercedarias del Niño Jesús. La que se realizó el <span class="important-date">1º de octubre del mismo año</span>, en la ciudad de Córdoba, Argentina.</p>
+        </div>
+        
+        <div class="text-section" style="--i:10">
+            <p>El nuevo Instituto nació impulsado por el Espíritu de Jesús Resucitado, Redentor del hombre, como retoño de la savia mariana del tronco de san Pedro Nolasco y el profundo amor a la Iglesia y a la Orden que el Padre José León Torres sentía. Así mismo, es fruto del encuentro y la experiencia del Padre Torres, en la contemplación de Cristo Redentor, de la celebración Eucarística, de la devoción a María de la Merced y la Evangelización liberadora.</p>
+        </div>
+        
+        <div class="text-section" style="--i:11">
+            <p>Las religiosas, estamos comprometidas a crecer cada día en el estilo propio de ser Mercedarias del Niño Jesús que el Padre Torres nos trasmitió, que implica cultivar y proyectar el carisma fundacional que el Espíritu Santo le otorgó, expresada en una espiritualidad mariana, eucarística y redentora.</p>
+        </div>
+        
+        <div class="text-section" style="--i:12">
+            <p><strong>Proyección del carisma fundacional</strong></p>
+            <p>El carisma fundacional, es un don confiado a un fundador y, a través de él a un instituto de vida consagrada. Normalmente indica la necesidad de dar respuestas a las situaciones más profunda de la realidad, que ha animado a cada fundador a responder con la fundación y que continúa animando a cada instituto religioso, su vida y misión.</p>
+        </div>
+        
+        <div class="text-section" style="--i:13">
+            <p>El Padre Torres, fue respuesta a la necesidad de acompañar a las familias en la educación de la vida cristiana, ya que la fe estaba en peligro, debido al avance de ideologías antievangélicas.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Instituto Nuestra Señora de la Merced - Legado Histórico</p>
+        </div>
+    </div>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Script para mejorar la interacción del menú en dispositivos móviles
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('click', function(e) {
+                        this.querySelector('.dropdown-content').style.display = 
+                            this.querySelector('.dropdown-content').style.display === 'block' ? 'none' : 'block';
+                        e.preventDefault();
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
